@@ -61,3 +61,16 @@ a {
 * {
 	box-sizing: border-box;
 }
+
+////////////////////// markdown styles //////////////////////
+.content {
+	& p {
+		margin-bottom: 1rem;
+	}
+
+	& img {
+		border-radius: 10px;
+		width: 50%;
+		margin: 2rem auto;
+	}
+}

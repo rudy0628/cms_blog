@@ -1,27 +1,32 @@
 {
-  "name": "cms_blog",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "graphql": "^16.6.0",
-    "graphql-request": "^5.0.0",
-    "html-react-parser": "^3.0.4",
-    "moment": "^2.29.4",
-    "next": "13.0.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-multi-carousel": "^2.8.2",
-    "sass": "^1.55.0"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.2.1"
-  }
+	"name": "cms_blog",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"graphql": "^16.6.0",
+		"graphql-request": "^5.0.0",
+		"html-react-parser": "^3.0.4",
+		"moment": "^2.29.4",
+		"next": "13.0.1",
+		"next-mdx-remote": "^4.1.0",
+		"next-transpile-modules": "^10.0.0",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-markdown": "^8.0.3",
+		"react-multi-carousel": "^2.8.2",
+		"react-syntax-highlighter": "^15.5.0",
+		"rehype-raw": "^6.1.1",
+		"sass": "^1.55.0"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.13",
+		"postcss": "^8.4.18",
+		"tailwindcss": "^3.2.1"
+	}
 }
