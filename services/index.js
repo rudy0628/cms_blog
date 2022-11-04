@@ -38,6 +38,39 @@ export const getPosts = async () => {
 	return result.postsConnection.edges;
 };
 
+export const getPostDetails = async slug => {
+	const query = gql`
+		query GetPostDetails($slug: String!) {
+			post(where: { slug: $slug }) {
+				author {
+					bio
+					name
+					id
+					photo {
+						url
+					}
+				}
+				createdAt
+				slug
+				title
+				excerpt
+				featuredImage {
+					url
+				}
+				categories {
+					name
+					slug
+				}
+				content
+			}
+		}
+	`;
+
+	const result = await request(graphqlAPI, query, { slug });
+
+	return result.post;
+};
+
 export const getRecentPosts = async () => {
 	const query = gql`
 		query GetRecentPost {
@@ -57,7 +90,7 @@ export const getRecentPosts = async () => {
 	return result.posts;
 };
 
-export const getSimilarPosts = async (category, slug) => {
+export const getSimilarPosts = async (categories, slug) => {
 	const query = gql`
 		query GetSimilarPosts($slug: String!, $categories: [String!]) {
 			posts(
@@ -77,7 +110,7 @@ export const getSimilarPosts = async (category, slug) => {
 		}
 	`;
 
-	const result = await request(graphqlAPI, query);
+	const result = await request(graphqlAPI, query, { categories, slug });
 
 	return result.posts;
 };
@@ -95,4 +128,32 @@ export const getCategories = async () => {
 	const result = await request(graphqlAPI, query);
 
 	return result.categories;
+};
+
+export const submitComment = async commentObj => {
+	const result = await fetch('/api/comment', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(commentObj),
+	});
+
+	return result.json();
+};
+
+export const getComments = async slug => {
+	const query = gql`
+		query GetComments($slug: String!) {
+			comments(where: { post: { slug: $slug } }) {
+				name
+				createdAt
+				comment
+			}
+		}
+	`;
+
+	const result = await request(graphqlAPI, query, { slug });
+
+	return result.comments;
 };
